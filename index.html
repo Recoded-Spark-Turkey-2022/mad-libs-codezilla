@@ -1,34 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>CodeZilla Mad Libs</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1 class="main-header">Header</h1> <!--I think we need something here like animation or some stuff we can discuss about later-->
-    <button type="button" id="preview-button">Preview</button> <!--This btn will be to do the merging-->
-    <div class = "flexbox-container"> <!--This flexbox container include edit-preview boxes-->
+    <h1 class="main-header">Header</h1>
+    <!--I think we need something here like animation or some stuff we can discuss about later-->
+    <button type="button" id="preview-button">Preview</button>
+    <!--This btn will be to do the merging-->
+    <div class="flexbox-container">
+      <!--This flexbox container include edit-preview boxes-->
       <div class="mad-libs-edit">
         <form id="edit-form">
-          <embed src="story.txt" id="edit-story">
-          <p id="edit-text">this will be the place the write <input type="text"> the 
-          story body and the inputs like <input type="text"> I'm doing now so please 
-        check this first and check what it need (class or id or values ) <input type="text"> and ofcours it will need 
-      breaks and other editing in css </p>
+          <embed src="story.txt" id="edit-story" />
+          <p id="edit-text">
+            this will be the place the write <input type="text" /> the story
+            body and the inputs like <input type="text" /> I'm doing now so
+            please check this first and check what it need (class or id or
+            values ) <input type="text" /> and ofcours it will need breaks and
+            other editing in css
+          </p>
         </form>
       </div>
       <div class="mad-libs-preview">
         <form id="preview-form">
-          <embed src="story.txt" id="preview-story">
-          <!-- <p>this is will be the place the write <strong><span>the input value</span></strong>  the 
-          story body and the inputs like <strong><span>the input value</span></strong> I'm doing now so please 
-        check this first and check what it need (class or id or values ) <strong><span>the input value</span></strong> and ofcours it will need 
-      breaks and other editing in css </p> -->
-        </form> 
+          <embed src="story.txt" id="preview-story" />
+          <p>
+            this is will be the place the write
+            <strong><span>the input value</span></strong> the story body and the
+            inputs like <strong><span>the input value</span></strong> I'm doing
+            now so please check this first and check what it need (class or id
+            or values ) <strong><span>the input value</span></strong> and
+            ofcours it will need breaks and other editing in css
+          </p>
+        </form>
       </div>
-    </div>   
+    </div>
     <script src="do-not-touch.js"></script>
     <script src="madlibs.js"></script>
   </body>
