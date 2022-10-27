@@ -28,6 +28,7 @@
  */
 function parseStory(rawStory) {
   // Your code here.
+  
 
   console.log(rawStory);
   return {}; // This line is currently wrong :)
