@@ -7,36 +7,20 @@
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <h1 class="main-header">Header</h1>
-    <!--I think we need something here like animation or some stuff we can discuss about later-->
-    <button type="button" id="preview-button">Preview</button>
-    <!--This btn will be to do the merging-->
-    <div class="flexbox-container">
-      <!--This flexbox container include edit-preview boxes-->
-      <div class="mad-libs-edit">
-        <form id="edit-form">
-          <embed src="story.txt" id="edit-story" />
-          <p id="edit-text">
-            this will be the place the write <input type="text" /> the story
-            body and the inputs like <input type="text" /> I'm doing now so
-            please check this first and check what it need (class or id or
-            values ) <input type="text" /> and ofcours it will need breaks and
-            other editing in css
-          </p>
-        </form>
-      </div>
-      <div class="mad-libs-preview">
-        <form id="preview-form">
-          <embed src="story.txt" id="preview-story" />
-          <p>
-            this is will be the place the write
-            <strong><span>the input value</span></strong> the story body and the
-            inputs like <strong><span>the input value</span></strong> I'm doing
-            now so please check this first and check what it need (class or id
-            or values ) <strong><span>the input value</span></strong> and
-            ofcours it will need breaks and other editing in css
-          </p>
-        </form>
+    <!--The main which contain all the content-->
+    <div class="main-container">
+      <!--The logo-->
+      <img src="https://creative.colorado.edu/~kesm7565/web/Madlib/madlibimage2.png" alt="Logo">
+      <!--A flex container to inculde the two stories-->
+      <div class="flex">
+        <div class="mad-libs-edit">
+          <!-- <embed src="story.txt" id="edit-story"> -->
+            <p>Lorem ipsum, <input type="text"> sit amet Lorem ipsum dolor sit amet, adipisicing elit <input type="text">. Animi ex nobis perspiciatis rem tenetur, iusto enim quia <input type="text">. Quaerat, placeat! Inventore hic aliquid possimus a ea nam autem aut iste? consectetur adipisicing elit. Laborum corrupti <input type="text"> tenetur quos quas modi rem dicta ipsam recusandae ratione quisquam, deleniti mollitia <input type="text"> seq</p>
+        </div>
+        <div class="mad-libs-preview">
+          <!-- <embed src="story.txt" id="preview-story"> -->
+            <p>Lorem ipsum, dolor sit amet Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi ex nobis perspiciatis rem tenetur, iusto enim quia repudiandae. Quaerat, placeat! Inventore hic aliquid possimus a ea nam autem aut iste? consectetur adipisicing elit. Laborum corrupti obcaecati tenetur quos quas modi rem dicta ipsam.</p>
+        </div>
       </div>
     </div>
     <script src="do-not-touch.js"></script>
