@@ -28,8 +28,9 @@
  */
 function parseStory(rawStory) {
   // Your code here.
+  const storyArray = rawStory.split(" ");
 
-  console.log(rawStory);
+  console.log(storyArray);
   return {}; // This line is currently wrong :)
 }
 
