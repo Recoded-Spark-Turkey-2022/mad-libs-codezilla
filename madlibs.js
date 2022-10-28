@@ -36,11 +36,11 @@ function parseStory(rawStory) {
   let b = (element !== a)
   let poss = element.substr(-3)
   let wordType = () => {
-    if(poss ==='[a]')
+    if(poss === '[a]')
       {return 'adjective'} 
-    else if(poss ==='[n]')
+    else if(poss === '[n]')
       {return 'noun'} 
-    else if(poss==='[v]')
+    else if(poss=== '[v]')
       {return 'verb'}};
     if(a)
         {return objectsArray.push({word:element.slice(0,-3),pos:wordType()})} 
