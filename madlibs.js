@@ -27,24 +27,25 @@
  * There are multiple ways to do this, but you may want to use regular expressions.
  * Please go through this lesson: https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/regular-expressions/
  */
+let objectsArray=[];
 function parseStory(rawStory) {
   // Your code here.
-
+  
   let storyArr =rawStory.split(' ')
-  function storyObjects(){
+  
     storyArr.forEach(element => {
       let a = element.match(/\w+(?=\s*\[)/g)
       let b = (element !== a)
       let poss = element.substr(-3)
     let wordType = ()=>{if(poss==='[a]'){return 'adjective'} else if(poss==='[n]'){return 'noun'} else if(poss==='[v]'){return 'verb'}};
-      if(a){return {word:element.slice(0,-3),pos:wordType()}} 
-      else if(b){return {word:element}} 
+      if(a){return objectsArray.push({word:element.slice(0,-3),pos:wordType()})} 
+      else if(b){return objectsArray.push({word:element})} 
     });
   };
   
-  return storyObjects();
+  console.log(objectsArray)
   
-};
+
 /**
  * All your other JavaScript code goes here, inside the function. Don't worry about
  * the `then` and `async` syntax for now.
@@ -54,5 +55,5 @@ function parseStory(rawStory) {
   getRawStory()
   .then(parseStory)
   .then((processedStory) => {
-    console.log(processedStory = processedStory.json());
+    console.log(processedStory );
   });
