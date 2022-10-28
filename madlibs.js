@@ -40,7 +40,7 @@ function parseStory(rawStory) {
       {return 'adjective'} 
     else if(poss === '[n]')
       {return 'noun'} 
-    else if(poss=== '[v]')
+    else if(poss === '[v]')
       {return 'verb'}};
     if(a)
         {return objectsArray.push({word:element.slice(0,-3),pos:wordType()})} 
@@ -48,7 +48,7 @@ function parseStory(rawStory) {
         {return objectsArray.push({word:element})} 
     });
   };
-  
+
   console.log(objectsArray)
 /**
  * All your other JavaScript code goes here, inside the function. Don't worry about
