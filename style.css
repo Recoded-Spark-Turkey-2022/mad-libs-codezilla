@@ -1,4 +1,4 @@
-/* *{
+*{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -64,8 +64,8 @@ input[type="text"]:focus {
   height: 3rem;
   color: black;
   background-color: #7a4181;
-  border: none; */
-/* } */
+  border: none; 
+}
 /* #paragraph {
   text-align: left;
   line-height: 2rem;
@@ -79,4 +79,4 @@ input[type="text"]:focus {
   white-space: nowrap;
   color: black;
  
-}  */
+} 
