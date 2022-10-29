@@ -44,7 +44,7 @@ img {
 }
 
 input {
-  width: 15%;
+  width: 40%;
   border-radius: 4px;
   border: 3px solid #ccc;
   -webkit-transition: 0.5s;
@@ -66,17 +66,4 @@ input[type="text"]:focus {
   background-color: #7a4181;
   border: none; 
 }
-/* #paragraph {
-  text-align: left;
-  line-height: 2rem;
-  font-size: smaller;
-  white-space: wrap;
-}
-#paragraph2 {
-  text-align: right;
-  line-height: 2rem;
-  font-size: smaller;
-  white-space: nowrap;
-  color: black;
- 
-} 
+

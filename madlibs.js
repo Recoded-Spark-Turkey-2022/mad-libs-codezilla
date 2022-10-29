@@ -29,6 +29,7 @@ function parseStory(rawStory) {
       input.setAttribute("type", "text");
       input.setAttribute("placeholder", object.pos);
       input.setAttribute("class", "inputs");
+      input.setAttribute("maxLength", "20");
       p.appendChild(input);
       input.addEventListener('input',(e)=>{
          inputvalue = e.target.value
