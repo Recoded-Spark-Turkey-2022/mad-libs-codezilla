@@ -1,36 +1,6 @@
-/**
- * Complete the implementation of parseStory.
- *
- * parseStory retrieves the story as a single string from story.txt
- * (I have written this part for you).
- *
- * In your code, you are required (please read this carefully):
- * - to return a list of objects
- * - each object should definitely have a field, `word`
- * - each object should maybe have a field, `pos` (part of speech)
- *
- * So for example, the return value of this for the example story.txt
- * will be an object that looks like so (note the comma! periods should
- * be handled in the same way).
- *
- * Input: "Louis[n] went[v] to the store[n], and it was fun[a]."
- * Output: [
- *  { word: "Louis", pos: "noun" },
- *  { word: "went", pos: "verb", },
- *  { word: "to", },
- *  { word: "the", },
- *  { word: "store", pos: "noun" }
- *  { word: "," }
- *  ....
- * ['I', 'walk', 'through', 'the', 'color', 'jungle', '.', 'I', 'take', 'out', 'my', 'beautiful[a]', 'canteen', '.', "There's", 'a', 'colorful[a]', 'parrot', 'with', 'a', 'giant[a]', 'worm[n]', 'in', 'his', 'mouth', 'right', 'there', 'in', 'front', 'of', 'me', 'in', 'the', 'enormous[a]', 'trees', '!', 'I', 'gaze', 'at', 'his', 'magnificient[a]', 'wings[n]', '.', 'A', 'sudden', 'sound', 'awakes', 'me', 'from', 'my', 'daydream', '!', 'A', 'panther’s', 'jumped[v]', 'in', 'front', 'of', 'my', 'head', '!', 'I', 'hold[v]', 'his', 'terrifying[a]', '', 'breath', '.', 'I', 'remember', 'I', 'have', 'a', 'packet', 'of', 'chips[n]', 'that', 'makes', 'go', 'into', 'a', 'deep', 'slumber', '!', 'I', 'gave[v]', 'it', 'away', 'from', 'me', 'in', 'front', 'of', 'the', 'desk[n]', '.', 'Yes', "he's", 'eating', 'it', …]
- *
- * There are multiple ways to do this, but you may want to use regular expressions.
- * Please go through this lesson: https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/regular-expressions/
- */
+
 let objectsArray = [];
 function parseStory(rawStory) {
-  // Your code here.
-
   let storyArr = rawStory.split(" ");
   storyArr.forEach((element) => {
     let a = element.match(/\w+(?=\s*\[)/g);
@@ -51,39 +21,39 @@ function parseStory(rawStory) {
       return objectsArray.push({ word: element });
     }
   });
-  let p = document.getElementById("paragraph"); //now I displyed the first story with it's inputs    //line 44 to 60
-  objectsArray.map((object) => {
+  let inputvalue;
+  let p = document.getElementById("paragraph"); 
+  objectsArray.map((object,index) => {
     if (object.pos) {
-      input = document.createElement("input");
+     let input = document.createElement("input");
       input.setAttribute("type", "text");
       input.setAttribute("placeholder", object.pos);
       input.setAttribute("class", "inputs");
       p.appendChild(input);
-      return;
+      input.addEventListener('input',(e)=>{
+         inputvalue = e.target.value
+         let x = document.getElementById(index)
+         x.innerText = e.target.value
+        })
     } else {
-      text = document.createTextNode(" " + object.word + "  ");
+     let text = document.createTextNode(' ' + object.word );
       p.appendChild(text);
       return;
     }
   });
   let inputs = document.getElementsByClassName("inputs");
-  let inputsValue = [];
-  for (let i = 0; i < inputs.length; i++) {
-    inputsValue.push(inputs[i].value);
-  }
-  console.log(inputsValue);
   let p2 = document.getElementById("paragraph2");
-  objectsArray.map((object) => {
+  objectsArray.map((object,index) => {
     if (object.pos) {
-      let valueSpan = document.createElement("span");
-      valueSpan.setAttribute("id", "span");
+      valueSpan = document.createElement("span");
+      valueSpan.setAttribute("id", index);
+      valueSpan.style.display = 'none'
       p2.appendChild(valueSpan);
     } else {
       text = document.createTextNode(" " + object.word + " ");
       p2.appendChild(text);
     }
   });
-
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener("keyup", (e) => {
       if (e.which === 13) {
@@ -95,6 +65,10 @@ function parseStory(rawStory) {
   let btn = document.getElementById("btn");
   btn.addEventListener("click", (e) => {
     e.preventDefault();
+    let y = document.querySelectorAll('span')
+    y.forEach(spanel=>{spanel.style.display = 'inline';
+    spanel.style.fontWeight = '700'; }
+    )
   });
 }
 
@@ -106,6 +80,4 @@ function parseStory(rawStory) {
  */
 getRawStory()
   .then(parseStory)
-  .then((processedStory) => {
-    //console.log(processedStory);
-  });
+  
