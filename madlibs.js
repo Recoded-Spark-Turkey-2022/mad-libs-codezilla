@@ -32,14 +32,10 @@ function parseStory(rawStory) {
   // Your code here.
 
   let storyArr = rawStory.split(" ");
-
   storyArr.forEach((element) => {
     let a = element.match(/\w+(?=\s*\[)/g);
-    //console.log(a);
     let b = element !== a;
-    //console.log(b);
     let poss = element.substr(-3);
-    console.log(poss);
     let wordType = () => {
       if (poss === "[a]") {
         return "adjective";
@@ -55,22 +51,50 @@ function parseStory(rawStory) {
       return objectsArray.push({ word: element });
     }
   });
-}
-console.log(objectsArray);
+  let p = document.getElementById("paragraph"); //now I displyed the first story with it's inputs    //line 44 to 60
+  objectsArray.map((object) => {
+    if (object.pos) {
+      input = document.createElement("input");
+      input.setAttribute("type", "text");
+      input.setAttribute("placeholder", object.pos);
+      input.setAttribute("class", "inputs");
 
-function createElement() {
-  let div = document.createElement("div");
-  div.id = "content";
-  div.innerHTML = "<p>CreateElement example</p>";
-  document.body.appendChild(div);
-}
-createElement();
+      p.appendChild(input);
+      return;
+    } else {
+      text = document.createTextNode(" " + object.word + "  ");
+      p.appendChild(text);
+      return;
+    }
+  });
+  let inputs = document.getElementsByClassName("inputs");
+  let p2 = document.getElementById("paragraph2");
+  objectsArray.map((object) => {
+    if (object.pos) {
+      let value = document.createElement("span");
+      value.setAttribute("id", "span");
+      p2.appendChild(value);
+    } else {
+      text = document.createTextNode(" " + object.word + " ");
+      p2.appendChild(text);
+    }
+  });
 
-objectsArray.map((object) => {
-  if (object.pos) {
-    input = document.createElement("input");
+  for (let i = 0; i < inputs.length; i++) {
+    inputs[i].addEventListener("keyup", (e) => {
+      if (e.which === 13) {
+        e.preventDefault();
+        inputs[i].nextElementSibling.focus();
+      }
+    });
   }
-});
+  let btn = document.getElementById("btn");
+  btn.addEventListener("click", (e) => {
+    e.preventDefault();
+    let span = document.getElementById("span");
+    span.innerText = inputs.value;
+  });
+}
 
 /**
  * All your other JavaScript code goes here, inside the function. Don't worry about
