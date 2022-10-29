@@ -29,9 +29,9 @@
  */
 let objectsArray=[];
 function parseStory(rawStory) {
-  // Your code here.
+   // Your code here.
   
-  let storyArr =rawStory.split(' ')
+    let storyArr =rawStory.split(' ')
   
     storyArr.forEach(element => {
       let a = element.match(/\w+(?=\s*\[)/g)
@@ -41,9 +41,62 @@ function parseStory(rawStory) {
       if(a){return objectsArray.push({word:element.slice(0,-3),pos:wordType()})} 
       else if(b){return objectsArray.push({word:element})} 
     });
-  };
+    let p = document.getElementById('paragraph');    //now I displyed the first story with it's inputs    //line 44 to 60
+   objectsArray.map(object =>{
+    if(object.pos){
+       input = document.createElement('input')
+      input.setAttribute('type','text')
+      input.setAttribute('placeholder',object.pos)
+      input.setAttribute('class','inputs')
+      
+      p.appendChild(input)
+      return 
+    }
+    else{
+     text = document.createTextNode(' ' + object.word + '  ')
+     p.appendChild(text)
+     return
+    }
+    });
+    let inputs = document.getElementsByClassName('inputs');
+    let p2 = document.getElementById('paragraph2')
+    objectsArray.map(object=>{
+    if(object.pos){
+        let value = document.createElement('span')
+        value.setAttribute('id','span')
+        p2.appendChild(value)
+     }
+    else{
+        text = document.createTextNode(' '+ object.word  +' ')
+        p2.appendChild(text)
+     }
+    });
+    
+    
+    for(let i=0;i<inputs.length;i++){
+      inputs[i].addEventListener('keyup',e=>{
+        if(e.which === 13){
+          e.preventDefault()
+         inputs[i].nextElementSibling.focus();
+        }
+      })
+    };
+    let btn = document.getElementById('btn');
+    btn.addEventListener('click',e=>{
+     e.preventDefault();
+     let span = document.getElementById('span')
+     span.innerText = inputs.value;
+      
+      
+
+    })
+
+    
+};
   
-  console.log(objectsArray)
+
+  
+  
   
 
 /**
