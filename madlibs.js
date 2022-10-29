@@ -55,7 +55,6 @@ function parseStory(rawStory) {
       input.setAttribute('type','text')
       input.setAttribute('placeholder',object.pos)
       input.setAttribute('class','inputs')
-      
       p.appendChild(input)
       return 
     }
@@ -66,12 +65,17 @@ function parseStory(rawStory) {
     }
     });
     let inputs = document.getElementsByClassName('inputs');
+    let inputsValue=[];
+    for(let i =0;i<inputs.length;i++){
+      inputsValue.push(inputs[i].value) 
+    };
+    console.log(inputsValue)
     let p2 = document.getElementById('paragraph2')
     objectsArray.map(object=>{
     if(object.pos){
-        let value = document.createElement('span')
-        value.setAttribute('id','span')
-        p2.appendChild(value)
+        let valueSpan = document.createElement('span')
+        valueSpan.setAttribute('id','span');
+        p2.appendChild(valueSpan);
      }
     else{
         text = document.createTextNode(' '+ object.word  +' ')
@@ -91,8 +95,7 @@ function parseStory(rawStory) {
     let btn = document.getElementById('btn');
     btn.addEventListener('click',e=>{
      e.preventDefault();
-     let span = document.getElementById('span')
-     span.innerText = inputs.value;
+     
       
       
 
