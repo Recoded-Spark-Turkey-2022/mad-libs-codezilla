@@ -27,24 +27,50 @@
  * There are multiple ways to do this, but you may want to use regular expressions.
  * Please go through this lesson: https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/regular-expressions/
  */
-let objectsArray=[];
+let objectsArray = [];
 function parseStory(rawStory) {
   // Your code here.
-  
-  let storyArr =rawStory.split(' ')
-  
-    storyArr.forEach(element => {
-      let a = element.match(/\w+(?=\s*\[)/g)
-      let b = (element !== a)
-      let poss = element.substr(-3)
-    let wordType = ()=>{if(poss==='[a]'){return 'adjective'} else if(poss==='[n]'){return 'noun'} else if(poss==='[v]'){return 'verb'}};
-      if(a){return objectsArray.push({word:element.slice(0,-3),pos:wordType()})} 
-      else if(b){return objectsArray.push({word:element})} 
-    });
-  };
-  
-  console.log(objectsArray)
-  
+
+  let storyArr = rawStory.split(" ");
+
+  storyArr.forEach((element) => {
+    let a = element.match(/\w+(?=\s*\[)/g);
+    //console.log(a);
+    let b = element !== a;
+    //console.log(b);
+    let poss = element.substr(-3);
+    console.log(poss);
+    let wordType = () => {
+      if (poss === "[a]") {
+        return "adjective";
+      } else if (poss === "[n]") {
+        return "noun";
+      } else if (poss === "[v]") {
+        return "verb";
+      }
+    };
+    if (a) {
+      return objectsArray.push({ word: element.slice(0, -3), pos: wordType() });
+    } else if (b) {
+      return objectsArray.push({ word: element });
+    }
+  });
+}
+console.log(objectsArray);
+
+function createElement() {
+  let div = document.createElement("div");
+  div.id = "content";
+  div.innerHTML = "<p>CreateElement example</p>";
+  document.body.appendChild(div);
+}
+createElement();
+
+objectsArray.map((object) => {
+  if (object.pos) {
+    input = document.createElement("input");
+  }
+});
 
 /**
  * All your other JavaScript code goes here, inside the function. Don't worry about
@@ -52,8 +78,8 @@ function parseStory(rawStory) {
  *
  * You'll want to use the results of parseStory() to display the story on the page.
  */
-  getRawStory()
+getRawStory()
   .then(parseStory)
   .then((processedStory) => {
-    console.log(processedStory );
+    //console.log(processedStory);
   });
