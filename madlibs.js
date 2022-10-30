@@ -51,13 +51,14 @@ function parseStory(rawStory) {
       return objectsArray.push({ word: element });
     }
   });
+
   let p = document.getElementById("paragraph"); //now I displyed the first story with it's inputs    //line 44 to 60
-  objectsArray.map((object) => {
+  objectsArray.map((object, index) => {
     if (object.pos) {
       input = document.createElement("input");
       input.setAttribute("type", "text");
       input.setAttribute("placeholder", object.pos);
-      input.setAttribute("class", "inputs");
+      input.setAttribute("id", index);
       p.appendChild(input);
       return;
     } else {
@@ -66,23 +67,30 @@ function parseStory(rawStory) {
       return;
     }
   });
-  let inputs = document.getElementsByClassName("inputs");
+
+  let inputs = document.querySelectorAll("input");
+
+  console.log(inputs);
   let inputsValue = [];
   for (let i = 0; i < inputs.length; i++) {
     inputsValue.push(inputs[i].value);
   }
-  console.log(inputsValue);
+  //console.log(inputsValue);
+
   let p2 = document.getElementById("paragraph2");
-  objectsArray.map((object) => {
+  objectsArray.map((object, index) => {
     if (object.pos) {
       let valueSpan = document.createElement("span");
-      valueSpan.setAttribute("id", "span");
+      valueSpan.setAttribute("id", index);
       p2.appendChild(valueSpan);
     } else {
       text = document.createTextNode(" " + object.word + " ");
       p2.appendChild(text);
     }
   });
+
+  const spans = document.querySelectorAll("span");
+  console.log(spans);
 
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener("keyup", (e) => {
