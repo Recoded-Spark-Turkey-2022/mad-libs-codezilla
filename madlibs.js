@@ -57,9 +57,13 @@ function parseStory(rawStory) {
   });
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener("keyup", (e) => {
-      if (e.which === 13) {
-        e.preventDefault();
-        inputs[i].nextElementSibling.focus();
+      if (e.which === 13 || e.which === 39) {
+        e.preventDefault()
+        inputs[i].nextElementSibling.focus()
+      }
+      else if(e.which === 37){
+        e.preventDefault()
+        inputs[i].previousElementSibling.focus()
       }
     });
   }
