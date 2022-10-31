@@ -1,26 +1,30 @@
 let objectsArray = [];
+function onlyLetters(str) {
+  return /^[A-Za-z]*$/.test(str);
+}
 function parseStory(rawStory) {
   let storyArr = rawStory.split(" ");
   storyArr.forEach((element) => {
-    let a = element.match(/\w+(?=\s*\[)/g);
-    let b = element !== a;
-    let poss = element.substr(-3);
-    let wordType = () => {
-      if (poss === "[a]") {
+    let storyWord = element.match(/\w+(?=\s*\[)/g);
+    //let b = element !== a;
+    let wordType = element.substr(-3);
+    let checkWordType = () => {
+      if (wordType === "[a]") {
         return "adjective";
-      } else if (poss === "[n]") {
+      } else if (wordType === "[n]") {
         return "noun";
-      } else if (poss === "[v]") {
+      } else if (wordType === "[v]") {
         return "verb";
       }
     };
-    if (a) {
-      return objectsArray.push({ word: element.slice(0, -3), pos: wordType() });
-    } else if (b) {
+    if (storyWord) {
+      return objectsArray.push({ word: element.slice(0, -3), pos: checkWordType() });
+    } 
+    else {
       return objectsArray.push({ word: element });
     }
   });
-  let inputvalue;
+  let inputValue;
   let p = document.getElementById("paragraph");
   objectsArray.map((object, index) => {
     if (object.pos) {
@@ -31,10 +35,18 @@ function parseStory(rawStory) {
       input.setAttribute("class", "inputs");
       input.setAttribute("maxLength", "20");
       p.appendChild(input);
-      input.addEventListener("input", (e) => {
-        inputvalue = e.target.value;
+      //Preventing user from entering non-alphabetic character
+      input.addEventListener("keydown", (e) => {
+        if (!onlyLetters(e.key)) {
+          e.preventDefault();
+          alert("Please enter alphabetic characters");
+        }
+      })
+ input.addEventListener("input", (e) => {
+        inputValue = e.target.value;
         let x = document.getElementById(index);
         x.innerText = e.target.value;
+        //console.log(inputValue);
       });
     } else {
       let text = document.createTextNode(" " + object.word);
@@ -56,7 +68,7 @@ function parseStory(rawStory) {
     }
   });
   for (let i = 0; i < inputs.length; i++) {
-    inputs[i].addEventListener("keyup", (e) => {
+    inputs[i].addEventListener("keydown", (e) => {
       if (e.which === 13 || e.which === 39) {
         e.preventDefault();
         inputs[i].nextElementSibling.focus();
@@ -75,8 +87,8 @@ function parseStory(rawStory) {
       spanel.style.fontWeight = "700";
       spanel.style.color = "blue";
 
-      var preview = document.getElementById("preview");
-      var story = document.getElementById("story");
+     /* let preview = document.getElementById("preview");
+      let story = document.getElementById("story");
       if (preview.style.display === "none") {
         preview.style.display = "block";
       } else {
@@ -85,7 +97,7 @@ function parseStory(rawStory) {
         preview.style.justifyContent = "center";
         preview.style.alignItems = "center";
         preview.style.flexDirection = "column";
-      }
+      }*/
     });
   });
 }
@@ -94,8 +106,8 @@ function parseStory(rawStory) {
 
 //console.log(newHeader);
 
-var headers = document.getElementsByTagName("h1");
-for (var i = 0, len = headers.length; i < len; i++) {
+let headers = document.getElementsByTagName("h1");
+for (let i = 0, len = headers.length; i < len; i++) {
   headers[i].innerHTML = headers[i].innerHTML.toUpperCase();
   headers[i].style.backgroundColor = "rgb(50 45 51 / 69%)";
   headers[i].style.color = "#00e7ff";
