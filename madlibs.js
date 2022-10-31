@@ -42,11 +42,11 @@ function parseStory(rawStory) {
           alert("Please enter alphabetic characters");
         }
       })
- input.addEventListener("input", (e) => {
+
+      input.addEventListener("input", (e) => {
         inputValue = e.target.value;
         let x = document.getElementById(index);
         x.innerText = e.target.value;
-        //console.log(inputValue);
       });
     } else {
       let text = document.createTextNode(" " + object.word);
@@ -54,13 +54,16 @@ function parseStory(rawStory) {
       return;
     }
   });
+
   let inputs = document.getElementsByClassName("inputs");
   let p2 = document.getElementById("paragraph2");
   objectsArray.map((object, index) => {
     if (object.pos) {
       valueSpan = document.createElement("span");
       valueSpan.setAttribute("id", index);
-      valueSpan.style.display = "none";
+      valueSpan.style.display = "inline";
+      valueSpan.style.fontWeight = "700";
+      valueSpan.style.color = "blue";
       p2.appendChild(valueSpan);
     } else {
       text = document.createTextNode(" " + object.word + " ");
@@ -78,7 +81,7 @@ function parseStory(rawStory) {
       }
     });
   }
-  let btn = document.getElementById("btn");
+  /*let btn = document.getElementById("btn");
   btn.addEventListener("click", (e) => {
     e.preventDefault();
     let y = document.querySelectorAll("span");
@@ -87,9 +90,9 @@ function parseStory(rawStory) {
       spanel.style.fontWeight = "700";
       spanel.style.color = "blue";
 
-     /* let preview = document.getElementById("preview");
+     let preview = document.getElementById("preview");
       let story = document.getElementById("story");
-      if (preview.style.display === "none") {
+      /*if (preview.style.display === "none") {
         preview.style.display = "block";
       } else {
         story.style.display = "none";
@@ -97,9 +100,9 @@ function parseStory(rawStory) {
         preview.style.justifyContent = "center";
         preview.style.alignItems = "center";
         preview.style.flexDirection = "column";
-      }*/
+      }
     });
-  });
+  });*/
 }
 
 //let newHeader = header.charAt(0).toUpperCase() + header.slice(1);
