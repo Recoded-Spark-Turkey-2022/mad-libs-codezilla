@@ -53,8 +53,7 @@ function parseStory(rawStory) {
       return;
     }
   });
-
-  let inputs = document.getElementsByClassName("inputs");
+//Preview mode
   let p2 = document.getElementById("paragraph2");
   objectsArray.map((object, index) => {
     if (object.pos) {
@@ -66,6 +65,7 @@ function parseStory(rawStory) {
       p2.appendChild(text);
     }
   });
+  let inputs = document.getElementsByClassName("inputs");
   for (let i = 0; i < inputs.length; i++) {
     inputs[i].addEventListener("keydown", (e) => {
       if (e.which === 13 || e.which === 39) {

@@ -19,6 +19,8 @@ body{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  min-width: 300px;
+  flex-wrap: wrap;
   align-items: center;
   font-size: 1.1rem;
 }
@@ -78,6 +80,7 @@ h1{
   background-color: rgb(77, 23, 76);
   padding: 10px;
   border-radius: 15px;
+  font-size: 1.5rem;
 }
 span{
   color:rgb(255, 102, 209);
