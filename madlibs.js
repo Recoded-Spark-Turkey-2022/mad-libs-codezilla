@@ -1,4 +1,5 @@
 let objectsArray = [];
+//This function will be used for alert 
 function onlyLetters(str) {
   return /^[A-Za-z]*$/.test(str);
 }
@@ -82,21 +83,21 @@ let flex = document.getElementsByClassName('flex')
 let preview = document.getElementById("preview");
 let story = document.getElementById("story");
   let mainContainer = document.getElementById('main').style.display = 'none';
-    let welcom = document.createElement('div');
-    welcom.classList.add('welcom');
+    let welcome = document.createElement('div');
+    welcome.classList.add('welcom');
     let head = document.createElement('h1')
-    head.classList.add('welcom-title')
-    welcom.appendChild(head);
-    head.textContent = 'Welcom To #Codezilla Mad Libs'
-    document.querySelector('body').appendChild(welcom)
+    head.classList.add('welcome-title')
+    welcome.appendChild(head);
+    head.textContent = 'Welcome To #Codezilla Mad Libs'
+    document.querySelector('body').appendChild(welcome)
     
     let btn = document.createElement('button')
-    welcom.appendChild(btn)
+    welcome.appendChild(btn)
     btn.classList.add('btn')
     btn.textContent = 'START';
     btn.addEventListener('click',(e)=>{
     e.preventDefault()
-    welcom.style.display = 'none';
+    welcome.style.display = 'none';
     mainContainer = document.getElementById('main').style.display = 'block';
     })
 
