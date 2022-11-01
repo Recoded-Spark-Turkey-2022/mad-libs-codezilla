@@ -6,7 +6,6 @@ function parseStory(rawStory) {
   let storyArr = rawStory.split(" ");
   storyArr.forEach((element) => {
     let storyWord = element.match(/\w+(?=\s*\[)/g);
-    //let b = element !== a;
     let wordType = element.substr(-3);
     let checkWordType = () => {
       if (wordType === "[a]") {
@@ -35,7 +34,6 @@ function parseStory(rawStory) {
       input.setAttribute("class", "inputs");
       input.setAttribute("maxLength", "20");
       p.appendChild(input);
-      //Preventing user from entering non-alphabetic character
       input.addEventListener("keydown", (e) => {
         if (!onlyLetters(e.key)) {
           e.preventDefault();
@@ -61,9 +59,6 @@ function parseStory(rawStory) {
     if (object.pos) {
       valueSpan = document.createElement("span");
       valueSpan.setAttribute("id", index);
-      valueSpan.style.display = "inline";
-      valueSpan.style.fontWeight = "700";
-      valueSpan.style.color = "blue";
       p2.appendChild(valueSpan);
     } else {
       text = document.createTextNode(" " + object.word + " ");
@@ -81,50 +76,32 @@ function parseStory(rawStory) {
       }
     });
   }
-  /*let btn = document.getElementById("btn");
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-    let y = document.querySelectorAll("span");
-    y.forEach((spanel) => {
-      spanel.style.display = "inline";
-      spanel.style.fontWeight = "700";
-      spanel.style.color = "blue";
-
-     let preview = document.getElementById("preview");
-      let story = document.getElementById("story");
-      /*if (preview.style.display === "none") {
-        preview.style.display = "block";
-      } else {
-        story.style.display = "none";
-        preview.style.display = "flex";
-        preview.style.justifyContent = "center";
-        preview.style.alignItems = "center";
-        preview.style.flexDirection = "column";
-      }
-    });
-  });*/
+  
 }
-
-//let newHeader = header.charAt(0).toUpperCase() + header.slice(1);
-
-//console.log(newHeader);
+let flex = document.getElementsByClassName('flex')
+let preview = document.getElementById("preview");
+let story = document.getElementById("story");
+  let mainContainer = document.getElementById('main').style.display = 'none';
+    let welcom = document.createElement('div');
+    welcom.classList.add('welcom');
+    let head = document.createElement('h1')
+    head.classList.add('welcom-title')
+    welcom.appendChild(head);
+    head.textContent = 'Welcom To #Codezilla Mad Libs'
+    document.querySelector('body').appendChild(welcom)
+    
+    let btn = document.createElement('button')
+    welcom.appendChild(btn)
+    btn.classList.add('btn')
+    btn.textContent = 'START';
+    btn.addEventListener('click',(e)=>{
+    e.preventDefault()
+    welcom.style.display = 'none';
+    mainContainer = document.getElementById('main').style.display = 'block';
+    })
 
 let headers = document.getElementsByTagName("h1");
 for (let i = 0, len = headers.length; i < len; i++) {
   headers[i].innerHTML = headers[i].innerHTML.toUpperCase();
-  headers[i].style.backgroundColor = "rgb(50 45 51 / 69%)";
-  headers[i].style.color = "#00e7ff";
-  headers[i].style.borderRadius = "50px";
 }
-
-// function myFunction() {
-
-// }
-
-/**
- * All your other JavaScript code goes here, inside the function. Don't worry about
- * the `then` and `async` syntax for now.
- *
- * You'll want to use the results of parseStory() to display the story on the page.
- */
 getRawStory().then(parseStory);
