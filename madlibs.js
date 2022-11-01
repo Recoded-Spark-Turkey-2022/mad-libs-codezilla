@@ -84,7 +84,7 @@ let preview = document.getElementById("preview");
 let story = document.getElementById("story");
   let mainContainer = document.getElementById('main').style.display = 'none';
     let welcome = document.createElement('div');
-    welcome.classList.add('welcom');
+    welcome.classList.add('welcome');
     let head = document.createElement('h1')
     head.classList.add('welcome-title')
     welcome.appendChild(head);
